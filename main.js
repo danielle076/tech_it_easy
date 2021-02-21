@@ -181,3 +181,50 @@ function createElement(p, text, textColor, className) {
 }
 
 const toSell = createElement("p", `Total to sell: ${calculateToSell(inventory)}`, "red", "", "to-sell");
+
+const TVNames = inventory.map((tv) => {
+  return tv.name;
+});
+
+function showSoldOutDevices() {
+  const soldOutTVs = inventory.filter((tv) => {
+    return tv.originalStock === tv.sold;
+  });
+  return soldOutTVs;
+}
+
+function showAmbilightTVs() {
+  const hasAmbilight = inventory.filter((tv) => {
+    return tv.options.ambiLight === true;
+  });
+  return hasAmbilight;
+}
+
+function sortByPrice() {
+  const sortLowToHigh = inventory.sort((tvOne, tvTwo) => {
+    return tvOne.price - tvTwo.price;
+  });
+  return sortLowToHigh
+}
+
+function calculateTotalTurnOver(inventory) {
+  let turnOver = 0;
+  for (let i = 0; i < inventory.length; i++) {
+    const object = inventory[i];
+    turnOver = turnOver + (object.originalStock * object.price);
+  }
+  return turnOver;
+}
+
+const totalTurnOver = createElement("p", `Total turnover: € ${calculateTotalTurnOver(inventory)}, if everything has been sold`, "blue", "", "max-turnover");
+
+function calculateTurnOver(inventory) {
+  let turnOver = 0
+  for (let i = 0; i < inventory.length; i++) {
+    const object = inventory[i];
+    turnOver = turnOver + (object.sold * object.price);
+  }
+  return turnOver;
+}
+
+const turnOver = createElement("p", `Current turnover: € ${calculateTurnOver(inventory)}`, "green", "", "current-turnover");
