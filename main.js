@@ -161,3 +161,23 @@ const inventory = [
     sold: 8,
   },
 ];
+
+function calculateToSell(inventory) {
+  let toSellTotal = 0
+  for (let i = 0; i < inventory.length; i++) {
+    const item = inventory[i];
+    let toSellForEachProduct = (item.originalStock - item.sold);
+    toSellTotal = toSellTotal + toSellForEachProduct;
+  }
+  return toSellTotal;
+}
+
+function createElement(p, text, textColor, className) {
+  let element = document.createElement(p);
+  element.innerText = text;
+  element.style.color = textColor;
+  element.className = className;
+  document.body.appendChild(element);
+}
+
+const toSell = createElement("p", `Total to sell: ${calculateToSell(inventory)}`, "red", "", "to-sell");
