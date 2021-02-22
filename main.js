@@ -228,3 +228,34 @@ function calculateTurnOver(inventory) {
 }
 
 const turnOver = createElement("p", `Current turnover: € ${calculateTurnOver(inventory)}`, "green", "", "current-turnover");
+
+function inchesToCM(inches) {
+  return Math.round(inches / 0.39370);
+}
+
+function generateScreenSizesString(tv) {
+  let object = "";
+
+  for (let i = 0; i < tv.availableSizes.length; i++) {
+    object = object + tv.availableSizes[i] + " inch " + "(" + inchesToCM(tv.availableSizes[i]) + ")" + " | ";
+  }
+  return object.slice(0, -3);
+}
+
+function generateTVString(tv) {
+  return tv.brand + " " + tv.type + " - " + tv.name;
+}
+
+function formatPrice(tv) {
+  return "€" + tv.price + ",-";
+}
+
+function showInventory(inventory) {
+  for (let i = 0; i < inventory.length; i++) {
+    let tv = inventory[i];
+    const showTV = generateTVString(tv) + "\n" + formatPrice(tv) + "\n" + generateScreenSizesString(tv);
+    createElement("p", showTV, "", "tvs");
+  }
+}
+
+showInventory(inventory)
