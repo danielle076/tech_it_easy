@@ -258,4 +258,29 @@ function showInventory(inventory) {
   }
 }
 
-showInventory(inventory)
+function removeTV() {
+  let elements = document.getElementsByClassName("tvs");
+  while (elements.length > 0) {
+    elements[0].parentNode.removeChild(elements[0]);
+  }
+}
+
+const sortPrice = document.getElementById("sort-price-button")
+sortPrice.addEventListener("click",() => {
+  removeTV();
+  showInventory((sortByPrice()));
+})
+
+const sortAmbilight = document.getElementById("ambilight-tvs-button")
+sortAmbilight.addEventListener("click", () => {
+  removeTV();
+  showInventory(showAmbilightTVs());
+})
+
+const sortSoldOut = document.getElementById("sold-out-devices-button")
+sortSoldOut.addEventListener("click", ()=> {
+  removeTV();
+  showInventory(showSoldOutDevices());
+})
+
+showInventory(inventory);

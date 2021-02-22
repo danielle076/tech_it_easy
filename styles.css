@@ -3,3 +3,34 @@
   body{
       font-family: 'Roboto', sans-serif;
   }
+
+
+#sort-price-button {
+    transition-duration: 0.6s;
+    border: 2px solid orange;
+}
+
+#sort-price-button:hover {
+    background-color: orange;
+    color: white;
+}
+
+#ambilight-tvs-button {
+    transition-duration: 0.6s;
+    border: 2px solid orange;
+}
+
+#ambilight-tvs-button:hover {
+    background-color: orange;
+    color: white;
+}
+
+#sold-out-devices-button {
+    transition-duration: 0.6s;
+    border: 2px solid orange;
+}
+
+#sold-out-devices-button:hover {
+    background-color: orange;
+    color: white;
+}
